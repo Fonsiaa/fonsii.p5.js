@@ -1,0 +1,304 @@
+function setup() {
+  createCanvas(500, 500); //size of the canva
+}
+
+function draw() {
+  //bg(R,B,G)
+  background(145, 111, 111);
+  //no stroke or outline for the image
+  noStroke();
+  
+//using a filter
+var v = map(mouseX, 0, width, 0, 20)
+filter(POSTERIZE, v)
+  
+  //second oval
+  //black
+  fill(26, 26, 26);
+  //ellipe(x,y,w,h)
+  ellipse(248, 475, 298, 31);
+
+  //first oval
+  //black
+  fill(77, 77, 77);
+  //ellipe(x,y,w,h)
+  ellipse(248, 462, 264, 31);
+
+  //skeleton
+  //white
+  //fill(249, 249, 249);
+  fill ("#004d00")
+  //begins the shape
+  beginShape();
+  //main point
+  vertex(257, 203);
+  //top
+  bezierVertex(269, 204, 283, 206, 298, 215);
+  //right shoulder, going down
+  bezierVertex(300, 216, 307, 218, 309, 219);
+  //right mid-rib
+  bezierVertex(310, 217, 312, 218, 307, 219);
+  bezierVertex(301, 254, 296, 295, 293, 322);
+  //lower rib
+  bezierVertex(291, 351, 293, 374, 293, 377);
+  bezierVertex(291, 378, 287, 377, 282, 377);
+  // first/top right bone
+  bezierVertex(275, 374, 271, 374, 270, 375);
+  bezierVertex(269, 379, 268, 381, 267, 385);
+  //second bone
+  bezierVertex(267, 388, 274, 388, 280, 388);
+  bezierVertex(287, 389, 287, 399, 271, 398);
+  bezierVertex(271, 399, 270, 399, 270, 400);
+  bezierVertex(270, 399, 270, 400, 270, 402);
+  //first small bone - right
+  bezierVertex(267, 404, 265, 405, 266, 407);
+  bezierVertex(266, 410, 267, 412, 270, 409);
+  bezierVertex(272, 407, 274, 405, 279, 407);
+  bezierVertex(279, 413, 273, 416, 272, 418);
+  bezierVertex(269, 420, 266, 422, 265, 425);
+  //second small bone - right
+  bezierVertex(266, 428, 268, 431, 270, 430);
+  bezierVertex(274, 426, 276, 426, 279, 430);
+  bezierVertex(279, 433, 273, 436, 272, 440);
+  bezierVertex(270, 441, 267, 441, 267, 449);
+  bezierVertex(261, 462, 237, 457, 236, 450);
+  //bottom bone
+  bezierVertex(235, 449, 235, 448, 236, 447);
+  bezierVertex(237, 445, 237, 444, 236, 443);
+  bezierVertex(234, 443, 232, 440, 231, 439);
+  //last left bone
+  bezierVertex(226, 434, 225, 432, 225, 427);
+  bezierVertex(229, 427, 235, 431, 236, 429);
+  //3rd left small bone
+  bezierVertex(237, 425, 238, 421, 234, 420);
+  bezierVertex(231, 416, 227, 412, 227, 409);
+  bezierVertex(229, 406, 236, 410, 238, 408);
+  //2nd left bone
+  bezierVertex(238, 405, 238, 403, 237, 404);
+  //1st left bone
+  bezierVertex(234, 401, 233, 398, 228, 399);
+  bezierVertex(222, 398, 215, 401, 216, 391);
+  bezierVertex(222, 390, 228, 389, 237, 391);
+  //left rib
+  bezierVertex(239, 383, 239, 378, 236, 374);
+  bezierVertex(232, 374, 232, 373, 214, 384);
+  bezierVertex(212, 380, 219, 351, 224, 322);
+  bezierVertex(223, 294, 223, 268, 219, 243);
+  bezierVertex(211, 219, 215, 215, 219, 217);
+  bezierVertex(221, 215, 222, 213, 237, 204);
+  endShape();
+  
+  //skeleton face
+  beginShape();
+  //fill(204,204,204);
+  fill("#006600")
+  vertex(258, 97);
+  bezierVertex(322, 120, 326, 136, 327, 149);
+  bezierVertex(326, 161, 324, 174, 318, 186);
+  bezierVertex(305, 193, 300, 200, 297, 216);
+  //chin
+  bezierVertex(294,290,280,253,293,267);
+  bezierVertex(268,267,237,272,238,252);
+  bezierVertex(229,230,226,218,222,209);
+  bezierVertex(219,201,215,196,209,197);
+  bezierVertex(200,191,193,182,191,170);
+  bezierVertex(189,160,190,148,195,133);
+  endShape();
+  
+  //outer left eye
+  fill("#004d00");
+  beginShape();
+  vertex(228,136);
+  bezierVertex(233,135,239,135,246,138);
+  bezierVertex(253,141,256,152,253,159);
+  bezierVertex(252,163,245,169,233,171);
+  bezierVertex(228,172,221,171,213,167);
+  bezierVertex(205,162,207,151,209,147);
+  bezierVertex(210,143,217,137,228,136);
+  endShape();
+
+  //inner left eye
+  fill("#008000");
+  beginShape();
+  vertex(230,141);
+  bezierVertex(238,140,242,140,242,142);
+  bezierVertex(247,145,250,153,248,157);
+  bezierVertex(248,160,242,164,234,166);
+  bezierVertex(230,167,224,166,217,163);
+  bezierVertex(212,159,213,152,215,148);
+  bezierVertex(221,142,215,148,230,140);
+  endShape();
+
+  //outer right eye
+  fill("#004d00");
+  beginShape();
+  vertex(284,133);
+  bezierVertex(289,135,299,137,306,142);
+  bezierVertex(307,145,309,149,310,160);
+  bezierVertex(304,168,295,170,288,171);
+  bezierVertex(282,170,271,168,263,161);
+  bezierVertex(262,158,259,151,270,136);
+  bezierVertex(262,139,277,133,284,133);
+  endShape();
+
+  //inner right eye
+  fill("#008000");
+  beginShape();
+  vertex(290,139);
+  bezierVertex(297,140,303,144,304,147);
+  bezierVertex(306,151,307,159,301,163);
+  bezierVertex(294,167,289,167,283,166);
+  bezierVertex(275,165,268,160,267,156);
+  bezierVertex(265,152,268,143,273,139);
+  bezierVertex(279,138,284,138,290,139);
+  endShape();
+  
+  //nose
+  fill("#004d00");
+  beginShape();
+  vertex(257,161);
+  bezierVertex(260,167,262,171,264,177);
+  bezierVertex(266,182,267,189,265,195);
+  bezierVertex(262,194,261,191,260,188);
+  bezierVertex(259,184,258,181,257,178);
+  bezierVertex(257,177,257,181,257,184);
+  bezierVertex(256,187,255,191,253,194);
+  bezierVertex(250,195,248,189,249,183);
+  bezierVertex(251,178,252,172,255,167);
+  endShape();
+  
+  //mouth
+  fill("#008000")
+  beginShape();
+  vertex(275,195);
+  bezierVertex(279,198,281,204,282,209);
+  bezierVertex(282,214,283,218,283,222);
+  bezierVertex(284,225,284,228,283,231);
+  bezierVertex(283,239,282,245,279,250);
+  bezierVertex(277,253,275,256,273,258);
+  bezierVertex(268,262,263,262,263,262);
+  bezierVertex(258,261,254,260,251,256);
+  bezierVertex(247,252,244,247,241,241);
+  bezierVertex(240,237,238,233,238,229);
+  bezierVertex(236,224,235,219,234,215);
+  bezierVertex(233,206,232,200,231,194);
+  bezierVertex(236,197,241,199,245,200);
+  bezierVertex(258,205,256,201,261,199);
+  bezierVertex(266,198,271,195,275,195);
+  endShape();
+  
+  //upper teeth
+  fill("white")
+  beginShape();
+  vertex(260,200);
+  bezierVertex(265,197,269,196,272,194);
+  bezierVertex(277,191,278,192,279,197);
+  bezierVertex(279,200,279,203,278,206);
+  bezierVertex(276,208,276,205,275,205);
+  bezierVertex(272,202,273,204,270,205);
+  bezierVertex(269,207,261,206,253,207);
+  bezierVertex(245,205,246,209,242,204);
+  bezierVertex(241,206,238,208,241,213);
+  bezierVertex(237,212,235,208,234,204);
+  bezierVertex(233,200,232,197,231,194);
+  bezierVertex(238,198,244,200,249,201);
+  bezierVertex(249,201,255,202,260,200);
+  endShape();
+  
+  //lower teeth
+  fill("white") //colour of the teeth
+  beginShape();
+  vertex(280,232);
+  bezierVertex(281,231,282,230,284,231);
+  bezierVertex(282,236,282,243,280,249);
+  //lower  outer teeth
+  bezierVertex(277,256,272,261,263,262);
+  bezierVertex(256,263,250,257,246,251);
+  bezierVertex(243,246,240,240,239,235);
+  bezierVertex(240,234,243,233,246,234);
+  bezierVertex(246,235,248,241,251,248);
+  bezierVertex(254,254,259,259,263,259);
+  bezierVertex(267,259,271,255,275,247);
+  bezierVertex(277,243,278,238,280,231);
+  endShape();
+  
+  //jacket
+  //grey
+  fill("black");
+  //the beginning of the shape
+  beginShape();
+  //point of the hoodie
+  vertex(260, 32);
+  //right side of the hoodie
+  bezierVertex(359, 32, 355, 148, 375, 173);
+  bezierVertex(380, 189, 344, 206, 334, 207);
+  //outer-right neck to shoulder
+  bezierVertex(334, 213, 330, 221, 340, 229);
+  //right shoulder
+  bezierVertex(358, 242, 378, 256, 383, 282);
+  //right arm
+  bezierVertex(386, 307, 387, 331, 388, 355);
+  bezierVertex(388, 380, 387, 403, 385, 420);
+  //bottom outer jacket
+  bezierVertex(383, 436, 381, 452, 378, 453);
+  bezierVertex(374, 456, 367, 457, 364, 458);
+  bezierVertex(358, 457, 354, 458, 337, 460);
+  //inner right jacket
+  bezierVertex(314, 461, 292, 462, 292, 423);
+  bezierVertex(286, 380, 285, 341, 284, 322);
+  bezierVertex(283, 304, 285, 287, 286, 266);
+  //inner right shoulder
+  bezierVertex(291, 248, 298, 231, 304, 219);
+  //inner right neck
+  bezierVertex(312, 207, 322, 198, 330, 190);
+  bezierVertex(340, 183, 352, 178, 336, 161);
+  //right mid hoodie to mid left hoodie
+  bezierVertex(303, 131, 293, 65, 210, 132);
+  bezierVertex(198, 144, 186, 157, 174, 169);
+  //left inner hoodie to inner shoulder
+  bezierVertex(199, 184, 212, 206, 221, 227);
+  bezierVertex(230, 250, 231, 275, 231, 300);
+  bezierVertex(229, 334, 220, 268, 217, 399);
+  bezierVertex(214, 418, 213, 425, 215, 451);
+  //bottom left jacket
+  bezierVertex(151, 452, 140, 455, 130, 454);
+  //bottom left - left outer arm
+  bezierVertex(120, 452, 117, 366, 118, 295);
+  //left outer shoulder
+  bezierVertex(129, 258, 170, 224, 171, 218);
+  //left neck
+  bezierVertex(175, 220, 171, 202, 160, 196);
+  bezierVertex(149, 188, 143, 174, 173, 92);
+  bezierVertex(173, 92, 208, 25, 260, 32);
+  endShape();
+
+  //hoodie shadow
+  fill(77, 77, 77);
+  beginShape();
+  vertex(259, 74);
+  bezierVertex(278, 88, 294, 107, 308, 120);
+  bezierVertex(329, 143, 346, 166, 360, 185);
+  bezierVertex(326, 160, 323, 160, 305, 145);
+  bezierVertex(289, 133, 273, 119, 263, 103);
+  bezierVertex(213, 138, 190, 157, 164, 177);
+  bezierVertex(171, 167, 180, 157, 190, 146);
+  bezierVertex(198, 138, 205, 130, 213, 122);
+  bezierVertex(234, 102, 253, 83, 259, 74);
+  endShape();
+
+  // Set the text size
+  textSize(30);
+  
+  // Set the stroke 
+    stroke('white'); //outline colour of the text
+  
+  // Set the stroke width  
+    strokeWeight(2); 
+  
+  //the text filled color  
+    fill('black'); 
+
+  // Set the text to print
+  //text(x,y)
+  text("Don't Touch Me", 150, 460); //(text,x,y)
+}
