@@ -1,0 +1,20 @@
+var img; // variable
+function preload() { //uploading an image in p5.js
+//img = loadImage("tree.jpg"); 
+img = loadImage("mountain.jpeg"); //putting new image
+}
+
+function setup () {
+createCanvas (1300, 700);//size of the canva
+}
+
+function draw() {
+background(0);//black background
+x = mouseX; 
+y = mouseY;
+image( img, 0, 0);//shows the entire image
+var c = get(x, y);//mouse interaction or mouse position
+fill(c); // the c is what the mouse picks
+//shape (x,y (position of the shape), width,height (size of the shape))
+rect(x,y,40,40) //shape of the colour picker
+}
