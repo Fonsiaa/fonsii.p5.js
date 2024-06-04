@@ -1,0 +1,33 @@
+//the variable and display text
+var one = "Bath"; 
+var two = "Spa";
+var three = "University"
+
+//uploading a font
+function preload () {
+ font = loadFont ("earwig factory rg.otf"); //the font
+} 
+
+function setup() {
+  createCanvas(400, 400); //size of the canva
+  background (255);
+  
+  //for the 'bath' text
+  //random text colour 
+  fill (random(255),random(255),random(255));
+  textFont (font, 100);//the size of the font
+  textAlign (CENTER); //alignment of the font
+  text(one, width/2,130); //variable and the position of the font
+  
+  //for the 'spa' text
+  fill(random(255),random(255),random(255))
+  textFont (font, 70); //font and size of the text
+  textAlign (CENTER);//alignment of the font
+  text(two, 200,190);//variable and the position of the font
+  
+  //for the 'university' text
+  fill(random(255),random(255),random(255))
+  textFont (font, 70); //font and size of the text
+  textAlign (CENTER);//alignment of the font
+  text(three, 200,250);//variable and the position of the font
+}
