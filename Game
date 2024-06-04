@@ -1,9 +1,9 @@
 let basket; // the basket that catches the object
 let theEgg = []; //the falling object
-let score = 0;
+let score = 0; //the starting number
 let missed = 0;
-const targetScore = 20;
-const maxMisses = 10;
+const targetScore = 20; //the target score
+const maxMisses = 10; //maximum number of misses
 let gameOver = false;
 let gameStarted = false;
 let barn; //bg image
