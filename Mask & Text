@@ -1,0 +1,37 @@
+var img; // variable
+function preload() { //uploading new image 
+img = loadImage("tree.png"); //putting new image
+}
+
+//canvas in the area
+function setup() { 
+createCanvas(700, 700);
+background("#9aab89");
+
+//image inside shape, using mask function - works with multiple shapes
+  img.resize(200,200); // resizing the sunflower image 
+  let t = createGraphics(100,100); // creating a sub canvas
+  t.circle(100,100,190); //190 is the size of the circle
+  t.triangle(0,0,300,340,200,0); //size and position of the circle
+  img.mask(t); //putting 2 slashes shows sqaure or the original shape
+  image(img,300,125); // putting the sub canvas inside the main canvas 
+
+  //image inside shape, using clip function - only works with one shape
+  img.resize(200,200); //resizing the image
+  //you can rename the cnv7
+  let r = createGraphics(200,200); //creating a sub-canvas inside the main       canvas/second canvas
+  r.circle(150,150,200);
+  r.canvas.getContext("2d").clip(); //getting all the things we'll put
+  r.image(img,0,0); //positioning the image 
+  image(r,310,352);
+  
+  // and now for the text:
+  cnv3 = createGraphics(width, height);
+  cnv3.fill("#114538");  
+  cnv3.rect(0,0,200,800);  // x , y, width and height 
+  cnv3.erase();
+  cnv3.textSize(80);
+  cnv3.text('trees',6,330); // txt, x, y
+  
+  image(cnv3, 0, 0); // putting the sub canvas inside the main canvas 
+}
