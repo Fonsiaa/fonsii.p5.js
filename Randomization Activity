@@ -1,0 +1,41 @@
+//number of colume/vertical
+// number of row/horizontal
+//circleD = (#) or diameter of the circle/size of the circle
+var maxCol = 7, maxRow = 5, circleD = 40; 
+
+function setup() {
+  //createCanva (width, height)
+  createCanvas(600, 400); //size of the canva
+  //randomize the background colour
+  background (random(0,255), random(0,255), random(0,255));
+  //corner on the ellipse
+  ellipseMode(CORNER);
+
+  //canvas width divide by 5
+  var xSpacing = (width/maxCol); //5 colume 
+  //canvas height divide by 4
+  var ySpacing = (height/maxRow); //4 row 
+  translate (30,27) //position of the shape
+  
+  //increase x by 1
+for (var x = 0; x < maxCol; x++) { 
+  for (var y = 0; y < maxRow; y++) { 
+    //inputting a condition
+    //always start with zero/0
+    //the position on the 4th postion
+    // if (x == 3) - vertical position
+  if (y == 2 || x >= 5) { 
+    //fill (red,green,blue)
+    //pink circle
+  fill (400, 100, 100); 
+  } else {
+    //fill (red,green,blue)
+    // grey circle
+    //random colour of the other unselected circles
+    fill (random(0,255), random(0,255), random(0,255));
+  }
+  ellipse (x*xSpacing, y*ySpacing, circleD,
+  circleD)
+  }
+ }
+}
