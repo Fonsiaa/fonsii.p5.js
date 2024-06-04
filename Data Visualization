@@ -1,0 +1,106 @@
+//direct data
+let sleep = [5.50, 7.55,11, 9.35, 7.10, 6, 7.5];
+let margin = 80; //margin on the sides
+let chartWidth, chartHeight;
+let maxValue;
+let night; // the background image value
+
+function preload() {
+    night = loadImage('night.jpeg'); //background image
+}
+
+function setup() {
+    createCanvas(725, 600); //size of the canva
+    chartWidth = width - 2 * margin;
+    chartHeight = height - 2 * margin;
+    maxValue = max(sleep); //takes the max value of the data
+    drawChart();
+}
+
+function drawChart() {
+    background(255);
+  
+    // Draw background image
+    image(night, 0, 0, width, 600);
+  
+    drawTitle();
+    drawAxes();
+    drawLine();
+}
+
+function drawTitle() {
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    fill(255); //white - colour of the title
+    text("Hours of Sleep in a Week", width / 2, margin / 2);
+}
+
+function drawAxes() {
+    stroke("#0050bf"); //colour of the y-axis line
+    line(margin, margin, margin, height - margin); // Y-axis
+    line(margin, height - margin, width - margin, height - margin); // X-axis
+
+    // Y-axis labels
+    let yStep = maxValue / 5;
+    for (let i = 0; i <= 5; i++) {
+        let y = map(i * yStep, 0, maxValue, height - margin, margin);
+        stroke("#0050bf");
+        fill(255); //white - text colour of the label on the left
+        textSize(15); // text size of the label on the left
+        textAlign(RIGHT, CENTER);
+        text(int(i * yStep), margin - 15, y);
+        stroke(350);
+        line(margin, y, width - margin, y); // Horizontal grid lines
+    }
+
+    // X-axis labels
+    for (let i = 0; i < sleep.length; i++) {
+        let x = map(i, 0, sleep.length - 1, margin, width - margin);
+        fill(255); // white - label on the bottom of the chart
+        noStroke();
+        textSize(15); // text size of the label on the bottom
+        textAlign(CENTER, TOP);
+        text(i + 1, x, height - margin + 10);
+    }
+
+    // Y-axis label
+    noStroke();
+    fill(255); //colour of the text
+    textSize(16);
+    textAlign(CENTER, CENTER); //alignment of the text
+    push();
+    translate(margin / 2, height / 2);
+    rotate(-HALF_PI); //rotation of the text 'Hour'
+    text("Hours", 0, -13); //text, x,y
+    pop();
+
+    // X-axis label
+    textAlign(CENTER, CENTER);
+    text("Day", width / 2, height - margin / 2);
+}
+
+function drawLine() { //shape of the line
+    beginShape();
+    stroke(255); //white - the colour of the line
+    strokeWeight(2); //the line
+    noFill();
+    for (let i = 0; i < sleep.length; i++) {
+        let x = map(i, 0, sleep.length - 1, margin, width - margin);
+        let y = map(sleep[i], 0, maxValue, height - margin, margin);
+        vertex(x, y);
+    }
+    endShape();
+
+    // Draw data points and labels
+    fill("#8aceff"); //the colour for the label
+    noStroke();
+    for (let i = 0; i < sleep.length; i++) {
+        let x = map(i, 0, sleep.length - 1, margin, width - margin);
+        //max value or the highest number of the data
+        let y = map(sleep[i], 0, maxValue, height - margin, margin);
+        ellipse(x, y, 9, 9); //the radius of the ellipse
+        textSize(12);
+        textAlign(CENTER, BOTTOM);
+        text(sleep[i], x, y - 8); //the text on the dot
+    }
+}
