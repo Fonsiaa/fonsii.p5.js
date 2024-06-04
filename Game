@@ -1,0 +1,195 @@
+let basket; // the basket that catches the object
+let theEgg = []; //the falling object
+let score = 0;
+let missed = 0;
+const targetScore = 20;
+const maxMisses = 10;
+let gameOver = false;
+let gameStarted = false;
+let barn; //bg image
+let nest;
+let effect; //adding bg music to the game
+var title = "Cath the Eggs!";
+var font1,other;
+
+function preload() {
+    effect = loadSound('hen.mp3'); // bg music
+    barn = loadImage('barn.jpg') //bg image
+    nest = loadImage('nest.png') //bg image
+    font1 = loadFont('DriftWood-z8W4.ttf')
+    other = loadFont('DkRunningHipsterRegular.otf')
+}
+
+function setup() {
+    createCanvas(700, 600); //size of the canva
+    basket = new Basket(); //new basket each game   
+}
+
+function draw() { //making a loop
+    if (!gameStarted) {
+        showStartScreen();
+        return; //goes back to the start
+    }
+
+    if (gameOver) {
+        showGameOver();
+        return; //goes back to the start
+    }
+
+    background(220); //bg colour of the game
+    image(barn,0,0,width,600)
+
+    basket.show();
+    basket.move();
+
+    if (frameCount % 60 == 0) {
+        theEgg.push(new TheEgg());
+    }
+
+    for (let i = theEgg.length - 1; i >= 0; i--) {
+        theEgg[i].show();
+        theEgg[i].update();
+
+        if (theEgg[i].hits(basket)) {
+            score++; //plus one to the scores if the basket catches the object
+            theEgg.splice(i, 1);
+            if (score >= targetScore) { //if it hits the target, the game is over 
+                gameOver = true;
+            }
+        } else if (theEgg[i].offScreen()) {
+            missed++;
+            theEgg.splice(i, 1);
+            if (missed >= maxMisses) { //if the maximum of missed objects is target, it's game over
+                gameOver = true;
+            }
+        }
+    }
+
+    showScore();
+}
+
+function showStartScreen() {
+    background(220); //bg colour of the
+    image(barn,0,0,width,600)
+    fill(0); //black - colour of the text
+    textAlign(CENTER, CENTER);
+    textFont(font1,70)
+    text(title, width / 2, height / 2 - 40);
+  
+    textFont(other)
+    textSize(54); //size of the subtitle
+    text("Click to start!", width / 2, height / 2 + 50);
+}
+
+function showScore() { //the text during the game
+    fill(0); //colour of the text
+    textSize(34); //size of the text
+    text("Catched: " + score, 70, 25); //text, x, y
+    text("Missed: " + missed, 65, 55); //text, x, y
+}
+
+function showGameOver() { //when the game is over
+    background(220); //bg colour of the screen
+    fill(0); //text colour
+    textSize(66);
+    textAlign(CENTER, CENTER);
+    if (score >= targetScore) { //if caught eggs is target
+        image(barn,0,0,width,600)
+        text("You caught the eggs!", width / 2, height / 2 - 30);
+    } else { //if missed the eggs 10 times in the game
+        image(barn,0,0,width,600)
+        text("Game Over", width / 2, height / 2 - 30);
+    }
+    textSize(44);
+    text("Press R to Restart", width / 2, height / 2 + 60);
+}
+
+function mousePressed() { //the mouse being pressed
+    if (!gameStarted) { //when the mouse is pressed the game begins
+        startGame();
+    }
+}
+
+function keyPressed() {  //when the a specific keyboard is pressed
+    if (keyCode === LEFT_ARROW) { 
+        basket.setDir(-1); //going to the left
+    } else if (keyCode === RIGHT_ARROW) {
+        basket.setDir(1); //going to the right
+    } else if (keyCode === 82) { // 'R' key
+        resetGame(); //restarting the game
+    }
+}
+
+function keyReleased() {
+    if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
+        basket.setDir(0);
+    }
+}
+
+function startGame() {
+    gameStarted = true;
+    effect.loop(); // Start playing background music
+}
+
+function resetGame() {
+    score = 0;
+    missed = 0;
+    theEgg = [];
+    gameOver = false;
+    gameStarted = false;
+    effect.stop(); // Stop the background music when the game is reset
+}
+
+class Basket {
+    constructor() {
+        this.w = 100; //width 
+        this.h = 20; //height
+        this.x = width / 2 - this.w / 2;
+        this.y = height - this.h - 55;
+        this.xdir = 0;
+    }
+
+    show() {
+        image(nest, this.x, this.y, 110, 70); //the nest
+    }
+
+    setDir(dir) {
+        this.xdir = dir;
+    }
+
+    move() {
+        this.x += this.xdir * 5;
+        this.x = constrain(this.x, 0, width - this.w);
+    }
+}
+
+class TheEgg {
+    constructor() {
+        this.x = random(500);
+        this.y = 0;
+        this.r = 20;
+        this.yspeed = 7; //speed of the egg
+    }
+
+    show() {
+        fill(255); //white - colour of the egg
+        ellipse(this.x, this.y, 44,55);//positions of the egg and its shape
+    }
+
+    update() {
+        this.y += this.yspeed;
+    }
+
+    hits(basket) { //detects if the basket caught the egg 
+        if (this.y + this.r > basket.y && this.y - this.r < basket.y + basket.h) {
+            if (this.x + this.r > basket.x && this.x - this.r < basket.x + basket.w) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    offScreen() {
+        return (this.y > height);
+    }
+}
