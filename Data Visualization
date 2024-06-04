@@ -17,10 +17,10 @@ function setup() {
     drawChart();
 }
 
-function drawChart() {
+function drawChart() { //the chart
     background(255);
   
-    // Draw background image
+    // background image
     image(night, 0, 0, width, 600);
   
     drawTitle();
@@ -28,9 +28,9 @@ function drawChart() {
     drawLine();
 }
 
-function drawTitle() {
-    textAlign(CENTER, CENTER);
-    textSize(24);
+function drawTitle() { //the title
+    textAlign(CENTER, CENTER); //alignment
+    textSize(24); //text size
     fill(255); //white - colour of the title
     text("Hours of Sleep in a Week", width / 2, margin / 2);
 }
@@ -44,7 +44,7 @@ function drawAxes() {
     let yStep = maxValue / 5;
     for (let i = 0; i <= 5; i++) {
         let y = map(i * yStep, 0, maxValue, height - margin, margin);
-        stroke("#0050bf");
+        stroke("#0050bf");// the vertical line
         fill(255); //white - text colour of the label on the left
         textSize(15); // text size of the label on the left
         textAlign(RIGHT, CENTER);
