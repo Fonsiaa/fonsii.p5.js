@@ -158,7 +158,7 @@ class Basket {
     }
 
     move() {
-        this.x += this.xdir * 5;
+        this.x += this.xdir * 15; //speed of the basket
         this.x = constrain(this.x, 0, width - this.w);
     }
 }
