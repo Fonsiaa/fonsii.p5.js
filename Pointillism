@@ -1,0 +1,18 @@
+var img; // variable
+function preload() { //uploading new image 
+img = loadImage("tree.png"); //putting new image
+}
+
+function setup () {
+// canva (width, height)
+createCanvas (400, 400); //size of the canva
+background(34,54,20); //colour of the background = black
+}
+
+function draw() {
+x = random(width); //randomly places the ellipse
+y = random(height);
+var c = img.get(x, y); // getting the random shape
+fill(c[0], c[1], c[2], 190); //(c[0], c[1], c[2], 50 - transparency)
+rect (x, y, 90, 13); //(x,y,width, height)
+}
