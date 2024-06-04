@@ -9,7 +9,7 @@ let gameStarted = false;
 let barn; //bg image
 let nest;
 let effect; //adding bg music to the game
-var title = "Cath the Eggs!";
+var title = "Catch the Eggs!";
 var font1,other;
 
 function preload() {
