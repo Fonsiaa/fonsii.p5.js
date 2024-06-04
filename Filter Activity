@@ -1,0 +1,18 @@
+var img; // variable
+function preload() { //uploading new image 
+img = loadImage("tree.png"); //putting new image
+}
+
+function setup () {
+createCanvas (380,550);
+background(0);
+}
+
+function draw() {
+background(0);
+// (img, 0, 0) is the center of th image
+  image(img,0,0)
+  var v = map(mouseX,0,width,0,5)
+  // blur (#) the higher the number the blurry it is
+  filter(BLUR, v)
+}
