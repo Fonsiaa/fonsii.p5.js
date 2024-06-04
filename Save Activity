@@ -1,0 +1,22 @@
+var count = 1;
+var c;
+function setup() {
+  c = createCanvas(500, 500);
+  background(0);
+  noStroke();
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    fill (random(0,255),random(0,255),random(0,255), 40);
+    rect (mouseX, mouseY, 35, 30);//size 30x30
+  }
+}
+
+
+//toptal.com/developers/keycode
+function keyPressed () {
+  if (keyCode == 65 ){
+    saveCanvas (c, 'canvasName' + count, 'jpg')
+  }
+}
