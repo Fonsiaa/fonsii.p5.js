@@ -1,0 +1,69 @@
+let sounds = [];
+let beat = [];
+
+function preload() {
+    // uploading the beats/sounds
+    sounds.push(loadSound('bubbles.mp3'));//sound[0]
+    sounds.push(loadSound('clay.mp3')); //sound[1]
+    sounds.push(loadSound('bell-of-promise.wav')); //sound[2]
+    sounds.push(loadSound('fairy-glitter.wav')); //sound[3]
+}
+
+function setup() {
+    createCanvas(400, 400); //canva size
+    //the buttons
+    //beats(x,y,width,height),colour,sound[])
+    beat.push(new beats(120, 120, 140, 140, color("#D37676"), sounds[0])); //red
+    beat.push(new beats(280, 120, 140, 140, color("#F2C18D"), sounds[1])); //orange
+    beat.push(new beats(120, 280, 140, 140, color("#EEE4AB"), sounds[2])); //yellow
+    beat.push(new beats(280, 280, 140, 140, color("#92BA92"), sounds[3])); //green
+}
+
+function draw() {
+    background(255);//white - bg colour
+    noStroke(); //no outline on the ellipses
+    // showing the buttons
+    for (let beats of beat) {
+        beats.show();
+    }
+}
+
+function mousePressed() {
+    // Check if a button is clicked the beat will play
+    for (let beats of beat) {
+        if (beats.isClicked(mouseX, mouseY)) {
+            beats.playSound(); //plays the beat
+        }
+    }
+}
+
+class beats {
+    constructor(x, y, w, h, col, sound) {
+        //positions of the buttons
+        this.x = x;
+        this.y = y;
+        //diameter for the ellipse
+        this.w = w;
+        this.h = h;
+        this.col = col; //the colours associated to the beats
+        this.sound = sound; //the sound assoicated to the button
+    }
+
+    show() {
+        fill(this.col); //the colour 
+        ellipse(this.x, this.y, this.w, this.h); //shape of the button
+    }
+
+    isClicked(mx, my) {
+      // detects if the button is being press within its radius
+      let d = dist(mx, my, this.x, this.y); 
+      return d < this.w / 2; 
+    }
+
+    playSound() {
+        if (this.sound.isPlaying()) {
+            this.sound.stop();
+        }
+        this.sound.play(); //plays the sounds
+    }
+}
