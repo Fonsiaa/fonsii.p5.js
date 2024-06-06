@@ -1,0 +1,213 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+  noStroke();
+  
+  //rooftop
+  fill ("#242424")
+  beginShape ();
+  vertex(294,161);
+  bezierVertex (272,131,259,109,256,109,251,104);
+  bezierVertex (241,101,228,101,217,100,205,99);
+  bezierVertex (193,99,170,99,145,98,124,99);
+  bezierVertex (123,99,114,100,104,101,95,103);
+  bezierVertex (87,105,80,107,74,111,63,129);
+  bezierVertex (56,140,51,149,63,151,85,156);
+  bezierVertex (104,160,124,164,180,164,493,394);
+  endShape();
+  
+//right tire
+fill('#292929')
+beginShape();
+//top right
+vertex(350,235);
+bezierVertex(349,241,350,249,349,257,349,263);
+//going down
+bezierVertex(348,269,345,273,343,278,339,282);
+//on ground
+bezierVertex(334,285,323,284,310,284,305,380);
+//going up
+bezierVertex(302,276,300,271,298,268,296,264);
+endShape();
+  
+//front left tire
+fill('#292929')
+beginShape();
+//top
+vertex(129,201);
+//going left then down
+bezierVertex(124,202,122,206,120,213,116,220);
+bezierVertex(115,212,114,245,115,222,115,263);
+bezierVertex(119,283,121,276,123,280,126,282);
+bezierVertex(131,284,136,285,141,285,145,285);
+bezierVertex(150,285,154,284,159,280,162,276);
+bezierVertex(163,272,165,267,164,262);
+endShape();
+
+//back left tire
+fill('#292929')
+beginShape();
+//top center
+vertex(41,193);
+//to the left
+bezierVertex(37,193,34,198,33,205,31,212);
+bezierVertex(31,220,33,230,30,234,30,240);
+bezierVertex(31,245,32,251,35,257,39,262);
+//bottom to top
+bezierVertex(45,264,53,264,60,254,64,260);
+bezierVertex(66,257,67,192,69,200,68,246);
+endShape();
+
+//back left tire
+fill('#cccccc')
+beginShape();
+//top
+vertex(129,213);
+//going left then down
+bezierVertex(125,214,123,218,122,222,120,229);
+bezierVertex(120,239,120,248,120,262,122,273);
+bezierVertex(127,274,133,273,136,269,139,262);
+bezierVertex(140,257,141,251,140,242,139,237);
+bezierVertex(140,230,138,224,136,219,134,215);
+endShape();  
+
+//front left tire
+fill('#cccccc')
+beginShape();
+//top
+vertex(40,201);
+//going left then down
+bezierVertex(36,203,34,209,33,215,33,220);
+bezierVertex(33,226,33,231,33,235,33,238);
+bezierVertex(34,231,34,248,36,253,39,254);
+bezierVertex(43,253,46,249,47,243,48,238);
+bezierVertex(49,233,48,226,45,211,45,206);
+endShape();
+
+//inner body of the car
+  fill ("#cccccc");
+  beginShape ();
+  vertex (329,175);
+  bezierVertex (337,182,342,190,346,199,350,210);
+  //near the tire
+  bezierVertex (351,222,350,232,349,247,344,260);
+  bezierVertex (341,261,328,264,313,266,298,268);
+  //left side of the tire
+  bezierVertex (281,270,262,271,243,271,227,271);
+  bezierVertex (211,271,194,270,181,267,168,268);
+  //on the tire
+  bezierVertex (156,266,152,261,150,255,148,248);
+  bezierVertex (145,241,143,233,141,227,138,220);
+  bezierVertex (125,209,131,203,127,197,122,195);
+  //going down the front tire
+  bezierVertex (118,205,116,209,115,215,115,221);
+  bezierVertex (115,228,115,235,116,244,116,248);
+  bezierVertex (126,248,116,254,116,259,57,245);
+  //backside tire 
+  bezierVertex (55,240,54,233,52,227,52,222);
+  bezierVertex (51,216,49,211,48,203,45,196);
+  bezierVertex (41,192,32,186,33,210,32,209);
+  bezierVertex (31,198,33,185,37,176,329,175);
+  endShape();
+   
+  //body of the car
+  fill("grey");
+  beginShape ();
+  vertex (293,160);
+  bezierVertex (329,162,323,168,331,174,341,187);
+  bezierVertex (345,203,347,210,347,216,347,221);
+  bezierVertex (347,225,347,233,346,238,345,242);
+  bezierVertex (342,248,338,249,335,250,331,251);
+  bezierVertex (324,253,317,260,292,258,273,259);
+  bezierVertex (262,260,250,260,241,260,224,261);
+  bezierVertex (208,261,198,255,186,253,178,256);
+  //going up the tire on the front
+  bezierVertex (164,250,160,246,154,230,148,213);
+  //half way the tire
+  bezierVertex (145,200,138,188,131,185,117,185);
+  bezierVertex (124,187,122,189,119,191,117,193);
+  bezierVertex (116,197,114,202,113,209,112,216);
+  bezierVertex (113,209,112,216,110,229,123,241);
+  bezierVertex (114,244,58,231,56,222,54,252);
+  bezierVertex (55,222,57,196,48,189,46,184);
+  bezierVertex (43,178,40,176,36,180,40,168);
+  bezierVertex (43,151,50,134,135,163,224,162,390);
+  endShape();
+
+//left light
+fill(255);
+beginShape();
+stroke(0)
+strokeWeight(3)
+ellipse(168,192,28,27)
+//right light
+ellipse(327,185,21,28)
+endShape();
+
+   
+  //side window
+  fill('#808080');
+  beginShape();
+  //right tip of the window
+  vertex(121,111);
+bezierVertex(120,124,120,131,120,120,120,149);
+bezierVertex(120,167,126,155,65,144,52,184);
+  bezierVertex(67,145,53,143,78,113);
+  endShape();
+  
+  //window
+  fill('#808080');
+  beginShape();
+  vertex(191,108);
+bezierVertex(212,108,233,108,255,110,271,131);
+  bezierVertex(284,150,289,159,263,158,259,158);
+  bezierVertex(243,158,232,158,220,158,209,159);
+  bezierVertex(180,159,176,159,160,160,148,160);
+  bezierVertex(136,161,124,161,124,152,124,143);
+  bezierVertex(125,134,125,126,126,108,130,110);
+  bezierVertex(149,108,146,109,156,108,167,107);
+  endShape();
+  
+  //mirror
+  fill('#242424');
+  stroke('#808080');
+  strokeWeight(3);
+  beginShape ();
+  vertex (97,146);
+  bezierVertex (102,159,107,162,101,170,101,168);
+  bezierVertex (98,160,90,164,76,159,80,150);
+  bezierVertex (70,145,91,145,97,147);
+  endShape();
+
+//bumper
+//right top
+beginShape();
+fill('#292929');
+vertex(289,192);
+//curve of it
+  bezierVertex(303,193,307,195,310,197,313,199);
+  bezierVertex(315,201,317,204,319,206,320,209);
+  bezierVertex(322,212,321,215,320,216,317,216);
+  bezierVertex(198,218,196,217,194,216,194,214);
+  bezierVertex(196,209,198,204,202,201,206,197);
+  bezierVertex(206,197,212,195,221,194);
+  endShape();
+  
+//bumper1
+beginShape();
+fill('#grey');
+vertex(307,200);
+bezierVertex(221,204,200,205,205,206,210,231,307);
+  endShape();
+  
+//bumper 2
+beginShape();
+fill('#grey');
+vertex(312,209);
+bezierVertex(318,212,220,213,210,211,205,210);
+endShape();
+  
+}
